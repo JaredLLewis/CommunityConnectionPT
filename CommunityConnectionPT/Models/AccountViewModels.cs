@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CommunityConnectionPT.Models
@@ -64,6 +65,18 @@ namespace CommunityConnectionPT.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "First Name:")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name:")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "BirthDate:")]
+        public DateTime BirthDate { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
