@@ -37,7 +37,6 @@ namespace CommunityConnectionPT.Controllers
             var message = await EMailTemplate("WelcomeEmail");
             message = message.Replace("@ViewBag.Name", CultureInfo.CurrentCulture.TextInfo.ToTitleCase
                 (model.FirstName));
-
             await MessageServices.SendEmailAsync(model.Email, "Welcome!", message);
             return View("EmailSent");
         }

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CommunityConnectionPT.Models
 {
-    public class Application
+    public class ApplicationModels
     {
         public int Id { get; set; }
         public int Age { get; set; }
