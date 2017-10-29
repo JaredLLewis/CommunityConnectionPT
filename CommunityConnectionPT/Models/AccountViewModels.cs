@@ -4,6 +4,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CommunityConnectionPT.Models
 {
+
+    public class SendMailViewModel
+    {
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+    }
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -73,9 +87,7 @@ namespace CommunityConnectionPT.Models
         [Display(Name = "Last Name:")]
         public string LastName { get; set; }
 
-        [Required]
-        [Display(Name = "BirthDate:")]
-        public DateTime BirthDate { get; set; }
+       
 
         [Required]
         [EmailAddress]

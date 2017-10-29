@@ -9,12 +9,48 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CommunityConnectionPT.Models;
+using System.Configuration;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Data.SqlClient;
+using System.Web.Hosting;
+using System.IO;
 
 namespace CommunityConnectionPT.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult SendEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> SendEmail(SendMailViewModel model)
+        {
+            var message = await EMailTemplate("WelcomeEmail");
+            message = message.Replace("@ViewBag.Name", CultureInfo.CurrentCulture.TextInfo.ToTitleCase
+                (model.FirstName));
+
+            await MessageServices.SendEmailAsync(model.Email, "Welcome!", message);
+            return View("EmailSent");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult EmailSent()
+        {
+            return View();
+        }
+
+
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -51,6 +87,13 @@ namespace CommunityConnectionPT.Controllers
                 _userManager = value;
             }
         }
+
+        public static string EConfUser { get; set; }
+        public static string connection = GetConnectionString("DefaultConnection");
+        public static string command = null;
+        public static string parameterName = null;
+        public static string methodName = null;
+        string codeType = null;
 
         //
         // GET: /Account/Login
@@ -152,7 +195,7 @@ namespace CommunityConnectionPT.Controllers
             if (ModelState.IsValid)
             {
                 
-                var user = new ApplicationUser {FirstName = model.FirstName, LastName = model.LastName, Birthdate = model.BirthDate,
+                var user = new ApplicationUser {FirstName = model.FirstName, LastName = model.LastName,
                     UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -483,6 +526,140 @@ namespace CommunityConnectionPT.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+
+        public static async Task<string> EMailTemplate(string template)
+        {
+            var templateFilePath = HostingEnvironment.MapPath("~/Content/templates/") + template + ".cshtml";
+            StreamReader objstreamreaderfile = new StreamReader(templateFilePath);
+            var body = await objstreamreaderfile.ReadToEndAsync();
+            objstreamreaderfile.Close();
+            return body;
+        }
+
+        public static string GetConnectionString(string connection)
+        {
+            return ConfigurationManager.ConnectionStrings[connection].ConnectionString;
+        }
+
+        public static string ReturnString(string str)
+        {
+            string strOut = null;
+            using (SqlConnection myConnection = new SqlConnection(connection))
+            using (SqlCommand cmd = new SqlCommand(command, myConnection))
+            {
+                cmd.Parameters.AddWithValue(parameterName, str);
+                myConnection.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            if (methodName == "FindEmail")
+                            {
+                                strOut = reader["Email"].ToString();
+                            }
+                            else if (methodName == "FindUserName" || methodName == "FindUserNameById")
+                            {
+                                strOut = reader["UserName"].ToString();
+                            }
+                            else if (methodName == "FindUserId")
+                            {
+                                strOut = reader["UserId"].ToString();
+                            }
+                        }
+                        myConnection.Close();
+                    }
+                    return strOut;
+                }
+            }
+        }
+
+        public static string FindEmail(string email)
+        {
+            command = "SELECT Email AS Email FROM AspNetUsers WHERE Email = @Email";
+            parameterName = "@Email";
+            methodName = "FindEmail";
+            return ReturnString(email);
+        }
+
+        public string FindUserName(string username)
+        {
+            command = "SELECT UserName AS UserName FROM AspNetUsers WHERE UserName = @UserName";
+            parameterName = "@UserName";
+            methodName = "FindUserName";
+            return ReturnString(username);
+        }
+
+        public bool ReturnBool(string str)
+        {
+            bool econfOut = false;
+            string res = null;
+            using (SqlConnection myConnection = new SqlConnection(connection))
+            using (SqlCommand cmd = new SqlCommand(command, myConnection))
+            {
+                cmd.Parameters.AddWithValue(parameterName, str);
+                myConnection.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            res = reader["EmailConfirmed"].ToString();
+                            if (res == "False")
+                            {
+                                econfOut = false;
+                            }
+                            else
+                            {
+                                econfOut = true;
+                            }
+                        }
+                        myConnection.Close();
+                    }
+                    return econfOut;
+                }
+            }
+        }
+
+        public bool EmailConfirmation(string username)
+        {
+            command = "SELECT EmailConfirmed AS EmailConfirmed FROM AspNetUsers WHERE UserName = @UserName";
+            parameterName = "@UserName";
+            return ReturnBool(username);
+        }
+        public bool EmailConfirmationById(string userid)
+        {
+            command = "SELECT EmailConfirmed AS EmailConfirmed FROM AspNetUsers WHERE Id = @Id";
+            parameterName = "@Id";
+            return ReturnBool(userid);
+        }
+
+        public static int UpdateDatabase(string username)
+        {
+            using (SqlConnection myConnection = new SqlConnection(connection))
+            using (SqlCommand cmd = new SqlCommand(command, myConnection))
+            {
+                cmd.Parameters.AddWithValue(parameterName, username);
+                myConnection.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static int UpdateEmailLinkDate(string username)
+        {
+            command = "UPDATE AspNetUsers SET EmailLinkDate = '" + DateTime.Now + "' WHERE UserName = @UserName";
+            parameterName = "@UserName";
+            return UpdateDatabase(username);
+        }
+        public static int UpdateLastLoginDate(string username)
+        {
+            command = "UPDATE AspNetUsers SET LastLoginDate = '" + DateTime.Now + "' WHERE UserName = @UserName";
+            parameterName = "@UserName";
+            return UpdateDatabase(username);
+        }
+
         #endregion
     }
 }
