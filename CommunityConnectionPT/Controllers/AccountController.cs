@@ -50,11 +50,15 @@ namespace CommunityConnectionPT.Controllers
 
 
 
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        
+
         public AccountController()
         {
+            
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -94,6 +98,7 @@ namespace CommunityConnectionPT.Controllers
         public static string methodName = null;
         string codeType = null;
 
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -102,6 +107,7 @@ namespace CommunityConnectionPT.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+
 
         //
         // POST: /Account/Login

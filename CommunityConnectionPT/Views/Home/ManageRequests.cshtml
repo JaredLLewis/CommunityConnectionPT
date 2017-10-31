@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CommunityConnectionPT.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Manage Requests";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>Edit User Requests</h3>
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var users in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => users.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => users.LastName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = users.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = users.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = users.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>Use this area to provide additional information.</p>
+
