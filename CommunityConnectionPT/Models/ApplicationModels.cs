@@ -33,7 +33,7 @@ namespace CommunityConnectionPT.Models
     public enum Insurance
     {
         Medicare,
-        Medicade,
+        Medicaid,
     }
 
 }
