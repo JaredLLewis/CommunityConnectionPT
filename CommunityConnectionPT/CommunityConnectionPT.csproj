@@ -207,6 +207,30 @@
     <Compile Include="Migrations\201710251802208_removCol.Designer.cs">
       <DependentUpon>201710251802208_removCol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710312005215_Age.cs" />
+    <Compile Include="Migrations\201710312005215_Age.Designer.cs">
+      <DependentUpon>201710312005215_Age.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710312026495_removInsur.cs" />
+    <Compile Include="Migrations\201710312026495_removInsur.Designer.cs">
+      <DependentUpon>201710312026495_removInsur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710312302477_PhoneAdd.cs" />
+    <Compile Include="Migrations\201710312302477_PhoneAdd.Designer.cs">
+      <DependentUpon>201710312302477_PhoneAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710312305466_removnum.cs" />
+    <Compile Include="Migrations\201710312305466_removnum.Designer.cs">
+      <DependentUpon>201710312305466_removnum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711010052241_testNum.cs" />
+    <Compile Include="Migrations\201711010052241_testNum.Designer.cs">
+      <DependentUpon>201711010052241_testNum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711010105206_numDel.cs" />
+    <Compile Include="Migrations\201711010105206_numDel.Designer.cs">
+      <DependentUpon>201711010105206_numDel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationModels.cs" />
@@ -351,6 +375,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710251802208_removCol.resx">
       <DependentUpon>201710251802208_removCol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710312005215_Age.resx">
+      <DependentUpon>201710312005215_Age.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710312026495_removInsur.resx">
+      <DependentUpon>201710312026495_removInsur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710312302477_PhoneAdd.resx">
+      <DependentUpon>201710312302477_PhoneAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710312305466_removnum.resx">
+      <DependentUpon>201710312305466_removnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010052241_testNum.resx">
+      <DependentUpon>201711010052241_testNum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010105206_numDel.resx">
+      <DependentUpon>201711010105206_numDel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

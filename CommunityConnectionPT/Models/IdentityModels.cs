@@ -14,8 +14,10 @@ namespace CommunityConnectionPT.Models
         
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        //public DateTime Birthdate { get; set; }
-        
+        public int Age { get; set; }
+        public string Medicine { get; set; }
+
+
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -26,6 +28,7 @@ namespace CommunityConnectionPT.Models
             return userIdentity;
         }
     }
+    
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

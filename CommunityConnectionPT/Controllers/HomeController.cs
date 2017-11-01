@@ -47,7 +47,7 @@ namespace CommunityConnectionPT.Controllers
         [HttpPost]
         public ActionResult Update(ApplicationUser user)
         {
-            var userInDb = _dbContext.Users.SingleOrDefault(m => m.Id == user.Id);
+            var userInDb = _dbContext.Users.FirstOrDefault(m => m.Id == user.Id);
 
             if (userInDb == null)
                 return HttpNotFound();
@@ -69,7 +69,7 @@ namespace CommunityConnectionPT.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteItem(string id)
+        public ActionResult DoDelete(string id)
         {
             var item = _dbContext.Users.SingleOrDefault(m => m.Id == id);
 

@@ -200,8 +200,8 @@ namespace CommunityConnectionPT.Controllers
             if (ModelState.IsValid)
             {
                 
-                var user = new ApplicationUser {FirstName = model.FirstName, LastName = model.LastName,
-                    UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {FirstName = model.FirstName, LastName = model.LastName, Age = model.Age, Medicine = model.Medicine,
+                    PhoneNumber = model.PhoneNumber,UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

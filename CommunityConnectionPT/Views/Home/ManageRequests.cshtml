@@ -20,23 +20,48 @@
         <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medicine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
         
         <th></th>
     </tr>
 
     @foreach (var users in Model)
     {
+
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => users.FirstName)
+            <td> 
+                @Html.DisplayFor(modelItem => users.FirstName) 
             </td>
             <td>
-                @Html.DisplayFor(modelItem => users.LastName)
+                @Html.DisplayFor(modelItem => users.LastName)             
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => users.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => users.Medicine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => users.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => users.PhoneNumber)
+            </td>
+            
             
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = users.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = users.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = users.Id })
             </td>
         </tr>
