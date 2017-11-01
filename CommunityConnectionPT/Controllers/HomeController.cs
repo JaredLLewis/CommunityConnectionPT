@@ -44,42 +44,42 @@ namespace CommunityConnectionPT.Controllers
             return View(users);
         }
 
-        [HttpPost]
-        public ActionResult Update(ApplicationUser user)
-        {
-            var userInDb = _dbContext.Users.FirstOrDefault(m => m.Id == user.Id);
+        //[HttpPost]
+        //public ActionResult Update(ApplicationUser user)
+        //{
+        //    var userInDb = _dbContext.Users.FirstOrDefault(m => m.Id == user.Id);
 
-            if (userInDb == null)
-                return HttpNotFound();
+        //    if (userInDb == null)
+        //        return HttpNotFound();
 
-            userInDb.FirstName = user.FirstName;
-            userInDb.LastName = user.LastName; 
-            _dbContext.SaveChanges();
+        //    userInDb.FirstName = user.FirstName;
+        //    userInDb.LastName = user.LastName; 
+        //    _dbContext.SaveChanges();
 
-            return RedirectToAction("ManageRequests");
-        }
+        //    return RedirectToAction("ManageRequests");
+        //}
 
-        public ActionResult Delete(string id)
-        {
-            var item = _dbContext.Users.SingleOrDefault(m => m.Id == id);
+        //public ActionResult Delete(string id)
+        //{
+        //    var item = _dbContext.Users.SingleOrDefault(m => m.Id == id);
 
-            if (item == null) return HttpNotFound();
+        //    if (item == null) return HttpNotFound();
 
-            return View(item);
-        }
+        //    return View(item);
+        //}
 
-        [HttpPost]
-        public ActionResult DoDelete(string id)
-        {
-            var item = _dbContext.Users.SingleOrDefault(m => m.Id == id);
+        //[HttpPost]
+        //public ActionResult DoDelete(string id)
+        //{
+        //    var item = _dbContext.Users.SingleOrDefault(m => m.Id == id);
 
-            if (item == null) return HttpNotFound();
+        //    if (item == null) return HttpNotFound();
 
-            _dbContext.Users.Remove(item);
-            _dbContext.SaveChanges();
+        //    _dbContext.Users.Remove(item);
+        //    _dbContext.SaveChanges();
 
-            return RedirectToAction("ManageRequests");
-        }
+        //    return RedirectToAction("ManageRequests");
+        //}
 
 
     }

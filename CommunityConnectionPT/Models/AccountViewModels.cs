@@ -79,27 +79,27 @@ namespace CommunityConnectionPT.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "First Name:")]
-        public string FirstName { get; set; }
+        //[Required]
+        //[Display(Name = "First Name:")]
+        //public string FirstName { get; set; }
 
-        [Required]
-        [Display(Name = "Last Name:")]
-        public string LastName { get; set; }
+        //[Required]
+        //[Display(Name = "Last Name:")]
+        //public string LastName { get; set; }
 
-        [Required]
-        [Display(Name ="Age")]
-        public int Age { get; set; }
+        //[Required]
+        //[Display(Name ="Age")]
+        //public int Age { get; set; }
 
-        [Required]
-        [Display(Name = "Medicine")]
-        public string Medicine { get; set; }
+        //[Required]
+        //[Display(Name = "Medicine")]
+        //public string Medicine { get; set; }
 
-        [Required]
-        [Phone]
-        [DataType(DataType.PhoneNumber)]
-        [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
+        //[Required]
+        //[Phone]
+        //[DataType(DataType.PhoneNumber)]
+        //[Display(Name = "Phone Number")]
+        //public string PhoneNumber { get; set; }
 
         [Required]
         [EmailAddress]

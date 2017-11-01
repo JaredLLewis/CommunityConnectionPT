@@ -1,0 +1,23 @@
+﻿@model CommunityConnectionPT.Models.ApplicationModels
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<p>
+    Are you sure you would like to delete this Request?
+</p>
+<ul>
+    <li>Name: @Model.FirstName @Model.LastName</li>
+    <li>Description: @Model.Medicine</li>
+</ul>
+
+@using (Html.BeginForm("DoDelete", "Application", FormMethod.Post))
+{
+
+    @Html.HiddenFor(m => m.Id)
+    <input type="submit" class="btn btn-danger" value="Yes, Delete it!" />
+    @Html.ActionLink("No, back to videos", "Index")
+}

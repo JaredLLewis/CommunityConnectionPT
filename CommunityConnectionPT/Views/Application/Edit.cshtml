@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Update", "Application", FormMethod.Post, new { @class = "form" }))
+{
+    Html.RenderPartial("_UserForm");
+}
+

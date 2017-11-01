@@ -1,17 +1,14 @@
-﻿@model IEnumerable<CommunityConnectionPT.Models.ApplicationUser>
-
+﻿@model IEnumerable<CommunityConnectionPT.Models.ApplicationModels>
 @{
-    ViewBag.Title = "Manage Requests";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>Edit User Requests</h3>
 
 <h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "New")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -24,7 +21,13 @@
             @Html.DisplayNameFor(model => model.Age)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.YearlyIncome)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Medicine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Insurance)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
@@ -32,7 +35,7 @@
         <th>
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
-        
+
         <th></th>
     </tr>
 
@@ -40,17 +43,23 @@
     {
 
         <tr>
-            <td> 
-                @Html.DisplayFor(modelItem => users.FirstName) 
+            <td>
+                @Html.DisplayFor(modelItem => users.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => users.LastName)             
+                @Html.DisplayFor(modelItem => users.LastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => users.Age)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => users.YearlyIncome)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => users.Medicine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => users.Insurance)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => users.Email)
@@ -58,9 +67,10 @@
             <td>
                 @Html.DisplayFor(modelItem => users.PhoneNumber)
             </td>
-            
-            
+
+
             <td>
+                @Html.ActionLink("Email", "SendEmail","Account", new { id = users.Id }) |
                 @Html.ActionLink("Edit", "Edit", new { id = users.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = users.Id })
             </td>

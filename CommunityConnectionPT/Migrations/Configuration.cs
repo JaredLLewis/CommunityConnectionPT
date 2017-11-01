@@ -50,7 +50,7 @@ namespace CommunityConnectionPT.Migrations
 
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             //UserManager.AddToRole("064b40d1-662d-416f-b116-eee0d7dd1e83", "Admin");
-            UserManager.AddToRole("dfcef256-2c2a-4df0-a34c-7c81e1b1967e", "Admin");
+            UserManager.AddToRole("50769af5-49b5-47f5-bc98-c9a2e282d711", "Admin");
 
 
 

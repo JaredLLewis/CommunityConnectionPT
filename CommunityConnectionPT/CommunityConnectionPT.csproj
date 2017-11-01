@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -231,9 +232,22 @@
     <Compile Include="Migrations\201711010105206_numDel.Designer.cs">
       <DependentUpon>201711010105206_numDel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711010321149_testusers.cs" />
+    <Compile Include="Migrations\201711010321149_testusers.Designer.cs">
+      <DependentUpon>201711010321149_testusers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711010413412_updateuser.cs" />
+    <Compile Include="Migrations\201711010413412_updateuser.Designer.cs">
+      <DependentUpon>201711010413412_updateuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711010751199_updatedusers.cs" />
+    <Compile Include="Migrations\201711010751199_updatedusers.Designer.cs">
+      <DependentUpon>201711010751199_updatedusers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationModels.cs" />
+    <Compile Include="Models\ApplicationViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MessageServices.cs" />
@@ -349,7 +363,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\SendEmail.cshtml" />
     <Content Include="Views\Account\EmailSent.cshtml" />
-    <Content Include="Views\Home\ManageRequests.cshtml" />
+    <Content Include="Views\Application\Index.cshtml" />
+    <Content Include="Views\Application\New.cshtml" />
+    <Content Include="Views\Application\_UserForm.cshtml" />
+    <Content Include="Views\Application\Edit.cshtml" />
+    <Content Include="Views\Application\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -393,6 +411,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711010105206_numDel.resx">
       <DependentUpon>201711010105206_numDel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010321149_testusers.resx">
+      <DependentUpon>201711010321149_testusers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010413412_updateuser.resx">
+      <DependentUpon>201711010413412_updateuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010751199_updatedusers.resx">
+      <DependentUpon>201711010751199_updatedusers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
